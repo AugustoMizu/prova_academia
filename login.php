@@ -1,3 +1,9 @@
+<?php
+session_start();
+session_destroy();
+
+$status = isset($_GET['status']) ? $_GET['status'] : null;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,9 +18,9 @@
 </head>
 
 <body id="body-login">
-  <form action="" method="post" class="container-fluid">
+  <form action="actions/action_login.php" method="post" class="container-fluid">
     <div class="container w-50 border border-3 rounded p-4 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle" style="background-color: #f8f9fa;">
-      <h2 class="text-center mb-4">Login</h2>
+      <h2 class="text-center mb-4 fw-bolder">Login</h2>
       
       <div class="mb-3">
         <label for="tipo" class="form-label">Tipo de Usuário</label>
@@ -40,11 +46,21 @@
   </form>
   <script>
     window.addEventListener('load', function() {
-      const confirmacao = confirm("Não há uma conta de Administrador cadastrada, deseja cadastrar uma? 	＼(>o<)ノ");
+      const confirmacao = confirm("Não há uma conta de Administrador cadastrada, deseja cadastrar uma?        ＼(>o<)ノ");
       if (confirmacao) {
         // Redireciona para o script de cadastro de admin
         window.location.href = 'cadastro_admin.php?status=true';
       }
+    });
+  </script>
+  <script>
+    window.addEventListener('load', function() {
+      var status = <?= $status?>;
+
+      if(status === false){
+         alert("E-mail ou senha incorretos!      ＼(>o<)ノ");
+
+      }   
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

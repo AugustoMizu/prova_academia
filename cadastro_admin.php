@@ -12,40 +12,76 @@
 </head>
 
 <body id="body-login">
-    <form action="" method="post" class="container-fluid">
+    <form action="actions/action_cadastra_admin.php" method="post" class="container-fluid">
         <div class="container w-50 mt-2 border border-3 rounded p-4 shadow position-center top-50 start-50 bg-secondary-subtle" style="background-color: #f8f9fa;">
             <h2 class="text-center mb-4">Cadastro de Administrador</h2>
             <div class="mb-3">
                 <label for="nome-input" class="form-label">Nome</label>
-                <input type="text" id="nome-input" name="nome" class="form-control" required>
+                <input type="text" id="nome-input" name="nome_input" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
-                <input type="date" id="data_nascimento-input" name="data_nascimento" class="form-control" required>
+                <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="telefone-input" class="form-label">Telefone</label>
-                <input type="text" id="telefone-input" name="telefone" class="form-control">
+                <input type="text" id="telefone-input" name="telefone_input" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="salario-input" class="form-label">Salário</label>
-                <input type="number" step="0.01" id="salario-input" name="salario" class="form-control">
+                <input type="number" step="0.01" id="salario-input" name="salario_input" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="email-input" class="form-label">E-mail</label>
-                <input type="email" id="email-input" name="email" class="form-control" required>
+                <input type="email" id="email-input" name="email_input" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="senha-input" class="form-label">Senha</label>
-                <input type="password" id="senha-input" name="senha" class="form-control" required>
+                <input type="password" id="senha-input" name="password_input" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="data_admissao-input" class="form-label">Data de Admissão</label>
-                <input type="date" id="data_admissao-input" name="data_admissao" class="form-control" required>
+                <input type="date" id="data_admissao-input" name="data_admissao_input" class="form-control" required>
             </div>
             <button type="submit" class="button2  start-50 translate-middle-x">Cadastrar</button>
         </div>
     </form>
+    <script>
+        function formatarTelefone(telefone) {
+            telefone = telefone.replace(/\D/g, '');
+
+            if (telefone.length <= 2) {
+                return `${telefone}`;
+            } else if (telefone.length <= 7) {
+                return `${telefone.slice(0, 2)} ${telefone.slice(2)}`;
+            } else {
+                return `${telefone.slice(0, 2)} ${telefone.slice(2, 7)} ${telefone.slice(7, 11)}`;
+            }
+        }
+        document.getElementById('telefone_input').addEventListener('input', function() {
+            this.value = formatarTelefone(this.value);
+        });
+    </script>
+    <script>
+        function limitaSalario(salario) {
+
+            salario = salario.replace(/[^0-9]/g, '');
+
+            if (salario === '') {
+                return '';
+            }
+            let valor = parseFloat(salario) / 100;
+            let valorFormatado = valor.toFixed(2).toString().replace('.', ',');
+
+            if (valorFormatado.length > 10) {
+                return valorFormatado.slice(0, 10);
+            }
+            return valorFormatado;
+        }
+        document.getElementById('salario_input').addEventListener('input', function() {
+            this.value = limitaSalario(this.value);
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

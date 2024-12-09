@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    session_destroy();
+    header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,8 +28,9 @@
     </header>
     <main class="container-fluid">
         <div class="config-container container w-50 border border-3 rounded p-5 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle">
-            <label for="" style="font-size: xx-large; font-family: 'Times New Roman', Times, serif;"><strong>Configuração da
-                    Conta</strong></label>
+            <p><a href="login.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
+                SAIR</a></p>
+           <label for=""><h2>Configuração da Conta</h2></label>
             <span class="material-symbols-outlined">
                 settings
             </span>
