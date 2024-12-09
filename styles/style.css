@@ -1,5 +1,5 @@
 #body-login {
-    background-image: url('https://img.freepik.com/fotos-gratis/ginasio-com-equipamento-de-ciclismo-indoor_23-2149270210.jpg?t=st=1733702861~exp=1733706461~hmac=13cc398e9bf3070671ec4a5ebafe96d3708c25961aa987a1f78991912bdd5710&w=996');
+    background-image: url('../imagens/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -75,4 +75,93 @@
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
+
   
+  .config-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .config-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .option {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    color: black;
+    background-color: #6befc5;
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+       
+  }
+  
+  .option:hover {
+    background-color: #63d8b3;
+  }
+  
+  .option input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .option label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    background-color: #63d8b3;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+  }
+  
+  .submenu h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .submenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .submenu li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+  }
+  
+  .submenu li:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .submenu li:last-child {
+    border-bottom: none;
+  }
+  
+  .option:hover .submenu {
+    display: block;
+  }

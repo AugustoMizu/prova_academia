@@ -15,15 +15,26 @@
   <form action="" method="post" class="container-fluid">
     <div class="container w-50 border border-3 rounded p-4 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle" style="background-color: #f8f9fa;">
       <h2 class="text-center mb-4">Login</h2>
+      
       <div class="mb-3">
-        <label for="email-input" class="form-label">E-mail</label>
-        <input type="email" id="email-input" name="email" class="form-control" required>
+        <label for="tipo" class="form-label">Tipo de Usuário</label>
+        <select id="tipo" name="tipo" class="form-select" required>
+          <option value="" disabled selected>Selecione o tipo de usuário</option>
+          <option value="aluno">Aluno</option>
+          <option value="professor">Professor</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="email_input" class="form-label">E-mail</label>
+        <input type="email" id="email_input" name="email_input" class="form-control" required>
       </div>
       <div class="mb-3">
-        <label for="password-input" class="form-label">Senha</label>
-        <input type="password" id="password-input" name="password" class="form-control" required>
+        <label for="password_input" class="form-label">Senha</label>
+        <input type="password" id="password_input" name="password_input" class="form-control" required>
       </div>
-      <button type="submit" class="button2  start-50 translate-middle-x">Entrar</button>
+      <button type="submit" class="button2 start-50 translate-middle-x">Entrar</button>
       <p><a href="cadastro_aluno.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">não possui conta? Cadastre-se aqui!</a></p>
     </div>
   </form>
