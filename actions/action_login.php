@@ -6,7 +6,6 @@ $tipo = $_POST['tipo'];
 $email = $_POST['email_input'];
 $senha_digitada = $_POST['password_input'];
 
-
 if ($tipo == "aluno") { // consulta email e senha no banco de dados
 
     $sql = $pdo->prepare("SELECT id, nome, senha FROM alunos WHERE email = :email");
@@ -31,7 +30,7 @@ if ($tipo == "aluno") { // consulta email e senha no banco de dados
     $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 
     // Verifica se o usuário foi encontrado e se a senha está correta
-    if (password_verify($senha_digitada, $usuario['senha'])) {
+    if (password_verify($senha_digitada, $usuario['senha']) == true) {
         $_SESSION = $usuario;
         header("location: ../menu_professor.php");
     } else {
@@ -56,4 +55,3 @@ if ($tipo == "aluno") { // consulta email e senha no banco de dados
         exit;
     }
 }
-?>

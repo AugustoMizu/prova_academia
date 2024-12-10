@@ -12,35 +12,37 @@
 </head>
 
 <body id="body-login">
-    <form action="" method="post" class="container-fluid">
+    <form action="actions/action_cadastra_aluno.php" method="post" class="container-fluid">
         <div class="container w-50 border border-3 rounded p-4 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle" style="background-color: #f8f9fa;">
             <h2 class="text-center mb-4">Cadastro de Aluno</h2>
             <div class="mb-3">
                 <label for="nome-input" class="form-label">Nome</label>
-                <input type="text" id="nome-input" name="nome" class="form-control" required>
+                <input type="text" id="nome-input" name="nome_input" class="form-control" required>
             </div>
-            <div class="mb-3">
-                <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
-                <input type="date" id="data_nascimento-input" name="data_nascimento" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="telefone-input" class="form-label">Telefone</label>
-                <input type="text" id="telefone-input" name="telefone" class="form-control">
+            <div class="mb-3 d-flex align-items-center ">
+                <div class="container">
+                    <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
+                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
+                </div>
+                <div class="container">
+                    <label for="telefone-input" class="form-label">Telefone</label>
+                    <input type="text" id="telefone-input" name="telefone_input" class="form-control">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="email-input" class="form-label">E-mail</label>
-                <input type="email" id="email-input" name="email" class="form-control" required>
+                <input type="email" id="email-input" name="email_input" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="senha-input" class="form-label">Senha</label>
-                <input type="password" id="senha-input" name="senha" class="form-control" required>
+                <input type="password" id="senha-input" name="senha_input" class="form-control" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 w-50">
                 <label for="data_matricula-input" class="form-label">Data de Matrícula</label>
-                <input type="date" id="data_matricula-input" name="data_matricula" class="form-control" required>
+                <input type="date" id="data_matricula-input" name="data_matricula_input" class="form-control" required>
             </div>
             <button type="submit" class="button2  start-50 translate-middle-x">Cadastrar</button>
-            </div>
+        </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

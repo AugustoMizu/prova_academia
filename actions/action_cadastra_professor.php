@@ -19,7 +19,7 @@ $sql->execute();
 $emailExiste = $sql->fetchColumn();
 
 if ($emailExiste > 0) {
-    header("location: ../login.php");
+    header("location: ../cadastra_professor.php");
     exit;
 }
 
@@ -31,7 +31,7 @@ try {
     $sql->bindValue(':email', $email);
 
     $hashedPassword = password_hash($senha, PASSWORD_DEFAULT); // criptografa a senha antes de armazenar
-    $sql->bindValue(':senha', $hashedPassword);    
+    $sql->bindValue(':senha', $hashedPassword);     
     $sql->bindValue(':especialidade', $especialidade);
     $sql->bindValue(':salario', $salario);
     $sql->bindValue(':data_admissao', $data_admissao);

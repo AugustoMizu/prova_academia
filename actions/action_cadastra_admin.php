@@ -18,7 +18,7 @@ $sql->execute();
 $emailExiste = $sql->fetchColumn();
 
 if ($emailExiste > 0) {
-    header("location: ../login.php");
+    header("location: ../cadastra_admin.php");
     exit;
 }
 
