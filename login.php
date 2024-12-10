@@ -1,8 +1,15 @@
 <?php
+require "configPDO.php";
 session_start();
 session_destroy();
 
 $status = isset($_GET['status']) ? $_GET['status'] : null;
+
+// ver se já há um cadastro de admin 
+$sql = $pdo->query("SELECT COUNT(*) FROM administradores");
+$sql->execute();
+$adminExiste = $sql->fetchColumn();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +28,7 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
   <form action="actions/action_login.php" method="post" class="container-fluid">
     <div class="container w-50 border border-3 rounded p-4 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle" style="background-color: #f8f9fa;">
       <h2 class="text-center mb-4 fw-bolder">Login</h2>
-      
+
       <div class="mb-3">
         <label for="tipo" class="form-label">Tipo de Usuário</label>
         <select id="tipo" name="tipo" class="form-select" required>
@@ -45,22 +52,26 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
     </div>
   </form>
   <script>
+    // cadastrar admin caso não exista
     window.addEventListener('load', function() {
-      const confirmacao = confirm("Não há uma conta de Administrador cadastrada, deseja cadastrar uma?        ＼(>o<)ノ");
-      if (confirmacao) {
-        // Redireciona para o script de cadastro de admin
-        window.location.href = 'cadastro_admin.php?status=true';
+      var adminExiste = <?= $adminExiste; ?>;
+      if (adminExiste == 0) {
+        const confirmacao = confirm("Não há uma conta de Administrador cadastrada, deseja cadastrar uma?        ＼(>o<)ノ");
+        if (confirmacao) {
+          // Redireciona para o script de cadastro de admin
+          window.location.href = 'cadastro_admin.php?status=cadastrar';
+        }
       }
     });
   </script>
   <script>
     window.addEventListener('load', function() {
-      var status = <?= $status?>;
+      var status = <?= $status ?>;
 
-      if(status === false){
-         alert("E-mail ou senha incorretos!      ＼(>o<)ノ");
-
-      }   
+      if (status == false) {
+        alert("E-mail ou senha incorretos!      ＼(>o<)ノ");
+        <?php $status = null?>;
+      }
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

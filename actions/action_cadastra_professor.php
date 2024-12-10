@@ -7,7 +7,7 @@ $nome = $_POST['nome_input'];
 $data_nascimento = $_POST['data_nascimento_input'];
 $telefone = $_POST['telefone_input'];
 $email = $_POST['email_input'];
-$senha = $_POST['password_input'];
+$senha = $_POST['senha_input'];
 $especialidade = $_POST['especialidade_input'];
 $salario = $_POST['salario_input'];
 $data_admissao = $_POST['data_admissao_input']; 
@@ -39,7 +39,7 @@ try {
     if($sql->execute()){
     
         $_SESSION['id'] = $pdo->lastInsertId();
-        header('Location: ../menu_professor.php');
+       header('Location: ../menu_professor.php');
     }
 
 } catch (PDOException $e) {

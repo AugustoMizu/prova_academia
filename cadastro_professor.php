@@ -30,7 +30,7 @@ $dataMinima = date('Y-m-d');
                 <div class="container">
                     <label for="telefone-input" class="form-label">Telefone</label>
                     <input type="text" id="telefone_input" name="telefone_input" class="form-control" minlength="13"
-                        placeholder="XX XXXXX-XXXX" required>
+                        placeholder="XX XXXXX XXXX" required>
                 </div>
             </div>
             <div class="mb-3">

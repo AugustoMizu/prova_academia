@@ -1,3 +1,23 @@
+<?php
+require "configPDO.php";
+session_start();
+// isso é para impedir de voltar do login e cadastrar outro admin
+// se o status ou login for definido, status é usado, caso contrário, retorna ao login
+// ver se já há um cadastro de admin    
+$sql = $pdo->query("SELECT COUNT(*) FROM administradores");
+$sql->execute();
+$adminExiste = $sql->fetchColumn();
+
+$status = (isset($_GET['status']) || isset($_SESSION['id'])) ? $_GET['status'] : false;
+var_dump($status);
+var_dump($adminExiste);
+if ($status == false || ($adminExiste >= 1)) { 
+    // se estiver logado e não existir admin ao menos 1 admin,
+    // essa pagina não foi acessada corretamente
+     header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,23 +33,31 @@
 
 <body id="body-login">
     <form action="actions/action_cadastra_admin.php" method="post" class="container-fluid">
-        <div class="container w-50 mt-2 border border-3 rounded p-4 shadow position-center top-50 start-50 bg-secondary-subtle" style="background-color: #f8f9fa;">
+        <div class="container w-50 mt-2 border border-3 rounded p-4 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle" style="background-color: #f8f9fa;">
             <h2 class="text-center mb-4">Cadastro de Administrador</h2>
             <div class="mb-3">
                 <label for="nome-input" class="form-label">Nome</label>
                 <input type="text" id="nome-input" name="nome_input" class="form-control" required>
             </div>
-            <div class="mb-3">
-                <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
-                <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
+            <div class="mb-3  d-flex align-items-center">
+                <div class="container">
+                    <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
+                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
+                </div>
+                <div class="container">
+                    <label for="telefone-input" class="form-label">Telefone</label>
+                    <input type="text" id="telefone_input" name="telefone_input" class="form-control" placeholder="XX XXXXX XXXX">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="telefone-input" class="form-label">Telefone</label>
-                <input type="text" id="telefone-input" name="telefone_input" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="salario-input" class="form-label">Salário</label>
-                <input type="number" step="0.01" id="salario-input" name="salario_input" class="form-control">
+            <div class="mb-3  d-flex align-items-center ">
+                <div class="container">
+                    <label for="salario-input" class="form-label">Salário</label>
+                    <input type="text" step="0.01" id="salario_input" name="salario_input" class="form-control">
+                </div>
+                <div class="container">
+                    <label for="data_admissao-input" class="form-label">Data de Admissão</label>
+                    <input type="date" id="data_admissao-input" name="data_admissao_input" class="form-control" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="email-input" class="form-label">E-mail</label>
@@ -37,11 +65,7 @@
             </div>
             <div class="mb-3">
                 <label for="senha-input" class="form-label">Senha</label>
-                <input type="password" id="senha-input" name="password_input" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="data_admissao-input" class="form-label">Data de Admissão</label>
-                <input type="date" id="data_admissao-input" name="data_admissao_input" class="form-control" required>
+                <input type="senha" id="senha-input" name="senha_input" class="form-control" required>
             </div>
             <button type="submit" class="button2  start-50 translate-middle-x">Cadastrar</button>
         </div>

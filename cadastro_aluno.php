@@ -26,7 +26,7 @@
                 </div>
                 <div class="container">
                     <label for="telefone-input" class="form-label">Telefone</label>
-                    <input type="text" id="telefone-input" name="telefone_input" class="form-control">
+                    <input type="text" id="telefone_input" name="telefone_input" class="form-control" placeholder="XX XXXXX XXXX">
                 </div>
             </div>
             <div class="mb-3">
@@ -44,6 +44,22 @@
             <button type="submit" class="button2  start-50 translate-middle-x">Cadastrar</button>
         </div>
     </form>
+    <script>
+        function formatarTelefone(telefone) {
+            telefone = telefone.replace(/\D/g, '');
+
+            if (telefone.length <= 2) {
+                return `${telefone}`;
+            } else if (telefone.length <= 7) {
+                return `${telefone.slice(0, 2)} ${telefone.slice(2)}`;
+            } else {
+                return `${telefone.slice(0, 2)} ${telefone.slice(2, 7)} ${telefone.slice(7, 11)}`;
+            }
+        }
+        document.getElementById('telefone_input').addEventListener('input', function() {
+            this.value = formatarTelefone(this.value);
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
