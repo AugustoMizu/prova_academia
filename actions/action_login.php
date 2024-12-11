@@ -7,16 +7,16 @@ $email = $_POST['email_input'];
 $senha_digitada = $_POST['password_input'];
 
 if ($tipo == "aluno") {
-    $sql = $pdo->prepare("SELECT id, nome, senha FROM alunos WHERE email = :email");
+    $sql = $pdo->prepare("SELECT id, tipo_login, nome, senha FROM alunos WHERE email = :email");
 
 } else if ($tipo == "professor") {
-    $sql = $pdo->prepare("SELECT id, nome, senha FROM professores WHERE email = :email");
+    $sql = $pdo->prepare("SELECT id, tipo_login, nome, senha FROM professores WHERE email = :email");
 
 } else if ($tipo == "admin") {
-    $sql = $pdo->prepare("SELECT id, nome, senha FROM administradores WHERE email = :email");
+    $sql = $pdo->prepare("SELECT id, tipo_login, nome, senha FROM administradores WHERE email = :email");
 
 } else {
-    header("location: ../login.php?status=invalid_type");
+    header("location: ../login.php?status=tipo_invalido");
     exit;
 }
 
@@ -25,7 +25,7 @@ $sql->execute();
 $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 
 
-if ($usuario && password_verify($senha_digitada, $usuario['senha'])) {
+if ($usuario && password_verify($senha_digitada, $usuario['senha'])) { // dereciona ao menu adequado ou ao login
     $_SESSION = $usuario;
 
     if ($tipo == "aluno") {

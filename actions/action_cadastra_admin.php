@@ -22,7 +22,7 @@ $emailExiste = $sql->fetchColumn();
 
 if ($emailExiste > 0) {
     // Redireciona para a página de cadastro se o email já existir
-    header("location: ../cadastra_admin.php");
+    header("location: ../cadastra_admin.php?status=email_existente");
     exit;
 }
 
@@ -41,7 +41,8 @@ try {
     if ($sql->execute()) {
 
         $_SESSION['id'] = $pdo->lastInsertId();
-        header('Location: ../menu_admin.php');
+        header('Location: ../login.php?status=casdastrado');
+        exit;
     }
 } catch (PDOException $e) {
     echo "Erro ao cadastrar: " . $e->getMessage();

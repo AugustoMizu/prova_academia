@@ -39,7 +39,13 @@ try {
     if($sql->execute()){
         // Armazena o ID do novo aluno na sessão
         $_SESSION['id'] = $pdo->lastInsertId();
-        header('Location: ../menu_aluno.php');
+
+        // Verifica se o tipo de login é admin, caso sim retorna para o menu de admin
+        if ($_SESSION['tipo_login'] === 'admin') {
+            header('Location: ../menu_admin.php?status=cadastrado');
+        } else {
+            header('Location: ../menu_aluno.php');
+        }
         exit;
     }
 

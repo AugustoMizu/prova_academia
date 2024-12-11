@@ -1,6 +1,9 @@
 <?php
 require "configPDO.php";
 session_start();
+
+$dataMinima = date('Y-m-d');
+
 // isso é para impedir de voltar do login e cadastrar outro admin
 // se o status ou login for definido, status é usado, caso contrário, retorna ao login
 // ver se já há um cadastro de admin    
@@ -42,7 +45,7 @@ if ($status == false || ($adminExiste >= 1)) {
             <div class="mb-3  d-flex align-items-center">
                 <div class="container">
                     <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
-                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
+                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control"  max="<?= $dataMinima ?>" required>
                 </div>
                 <div class="container">
                     <label for="telefone-input" class="form-label">Telefone</label>

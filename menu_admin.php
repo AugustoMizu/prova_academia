@@ -4,6 +4,9 @@ session_start();
     session_destroy();
     header('location:login.php');
 }*/
+
+// cadastrado com sucesso
+$status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,6 +34,7 @@ session_start();
                     SAIR</a></p>
             <label for="">
                 <h2>Configuração da Conta</h2>
+                <h3>Administrador</h3>
             </label>
             <span class="material-symbols-outlined">
                 settings
@@ -64,7 +68,7 @@ session_start();
                             <a href="cadastro_professor.php" class="text-black link-underline link-underline-opacity-0">
                                 <li>Criar login Professor</li>
                             </a>
-                            <a href="cadastro_professor.php" class="text-black link-underline link-underline-opacity-0">
+                            <a href="cadastro_aluno.php" class="text-black link-underline link-underline-opacity-0">
                                 <li>Criar login Aluno</li>
                             </a>
                             <a href="deletar_contas.php" class="text-black link-underline link-underline-opacity-0">
@@ -89,6 +93,15 @@ session_start();
             </div>
         </div>
     </main>
+    <script>
+    window.addEventListener('load', function() {
+      var status = <?= json_encode($status) ?>;
+
+      if (status === 'cadastrado') {
+        alert("Cadastrado com sucesso!      (^_^.)");
+      }
+    });
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

@@ -66,12 +66,13 @@ $adminExiste = $sql->fetchColumn();
   </script>
   <script>
     window.addEventListener('load', function() {
-      var status = <?= $status ?>;
+      var status = <?= json_encode($status) ?>;
 
       if (status == false) {
         alert("E-mail ou senha incorretos!      ＼(>o<)ノ");
-        <?php $status = null?>;
-      }
+      }else if (status === 'cadastrado') {
+        alert("Administrador cadastrado com sucesso!      (^_^.)");
+    }
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

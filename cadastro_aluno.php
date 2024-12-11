@@ -1,3 +1,6 @@
+<?php 
+$dataMinima = date('Y-m-d');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,7 +25,7 @@
             <div class="mb-3 d-flex align-items-center ">
                 <div class="container">
                     <label for="data_nascimento-input" class="form-label">Data de Nascimento</label>
-                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" required>
+                    <input type="date" id="data_nascimento-input" name="data_nascimento_input" class="form-control" max="<?= $dataMinima ?>" required>
                 </div>
                 <div class="container">
                     <label for="telefone-input" class="form-label">Telefone</label>
