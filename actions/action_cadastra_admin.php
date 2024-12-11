@@ -6,9 +6,12 @@ session_start();
 $nome = $_POST['nome_input'];
 $data_nascimento = $_POST['data_nascimento_input'];
 $telefone = $_POST['telefone_input'];
+$telefone = str_replace(' ', '', $telefone);
+
 $email = $_POST['email_input'];
 $senha = $_POST['senha_input'];
 $salario = $_POST['salario_input'];
+$salario = floatval($salario);
 $data_admissao = $_POST['data_admissao_input'];
 
 // Verifica se o email já existe

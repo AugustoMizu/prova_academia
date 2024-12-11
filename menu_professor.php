@@ -36,15 +36,15 @@ session_start();
             </span>
             <div class="config-options text-black">
                 <div class="option">
-                    <a href="editar_professor.php"><label for="perfil">Editar Dados Pessoais</label> </a>                   
+                    <a href="menu_professor/editar_professor.php"><label for="perfil">Editar Dados Pessoais</label> </a>                   
                 </div>
                 <div class="option">
                     <label for="inventario">Gerenciar Horário</label>
                     <div class="submenu border border-3 rounded p-4 shadow">
                         <h2>Gerenciar Inventário</h2>
                         <ul>
-                            <a href="tabela_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Remover/Editar Horário</li></a>
-                            <a href="criar_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Adicionar Horário</li></a>
+                            <a href="menu_professor/tabela_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Remover/Editar Horário</li></a>
+                            <a href="menu_professor/criar_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Adicionar Horário</li></a>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +54,6 @@ session_start();
                         <h2>Financeiro</h2>
                         <ul>
                         <a href="tabela_pagamento.php" class="text-black link-underline link-underline-opacity-0"><li>Visualizar Folha de Pagamento</li></a>
-                        <a href="tabela_pagamento_print.php" class="text-black link-underline link-underline-opacity-0"><li>Imprimir Folha de Pagamento</li></a>
                         </ul>
                     </div>
                 </div>

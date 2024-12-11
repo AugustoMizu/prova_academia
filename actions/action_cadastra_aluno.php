@@ -6,6 +6,8 @@ session_start();
 $nome = $_POST['nome_input'];
 $data_nascimento = $_POST['data_nascimento_input'];
 $telefone = $_POST['telefone_input'];
+$telefone = str_replace(' ', '', $telefone);
+
 $email = $_POST['email_input'];
 $senha = $_POST['senha_input'];
 $data_matricula = $_POST['data_matricula_input']; 
