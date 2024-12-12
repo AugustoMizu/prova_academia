@@ -25,9 +25,6 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
 </head>
 
 <body id="body-login">
-    <header>
-
-    </header>
     <main class="container-fluid">
         <div class="config-container container w-50 border border-3 rounded p-5 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle">
             <p><a href="login.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -71,11 +68,8 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
                             <a href="cadastro_aluno.php" class="text-black link-underline link-underline-opacity-0">
                                 <li>Criar login Aluno</li>
                             </a>
-                            <a href="deletar_contas.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Deletar uma conta</li>
-                            </a>
-                            <a href="editar_contas.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Atualizar uma conta</li>
+                            <a href="menu_admin/tabela_editar_usuario.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Atualizar/Deletar uma conta</li>
                             </a>
                     </div>
                 </div>
@@ -84,11 +78,11 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
                     <div class="submenu border border-3 rounded p-4 shadow">
                         <h2>Gerenciar Horário de Professor</h2>
                         <ul>
-                            <a href="tabela_professor_admin.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Remover/Editar Horário</li>
-                            </a>
-                            <a href="criar_horario_admin.php" class="text-black link-underline link-underline-opacity-0">
+                            <a href="menu_admin/criar_horario_admin.php" class="text-black link-underline link-underline-opacity-0">
                                 <li>Adicionar Horário</li>
+                            </a>
+                            <a href="menu_admin/excluir_horario_admin.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Remover Horário</li>
                             </a>
                         </ul>
                     </div>

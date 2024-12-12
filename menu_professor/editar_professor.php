@@ -16,8 +16,7 @@ if ($_SESSION['tipo_login'] == 'professor') {
     $sql = $pdo->prepare("SELECT * FROM professores WHERE id = :id");
     $sql->bindValue(":id", $_SESSION['id']);
     $sql->execute();
-
-} else if( $_SESSION['tipo_login'] == 'admin'){ 
+} else if ($_SESSION['tipo_login'] == 'admin') {
     //se o tipo for admin, pega o id da url 
     $sql = $pdo->prepare("SELECT * FROM professores WHERE id = :id");
     $sql->bindValue(":id", $_GET['id']);
@@ -42,12 +41,21 @@ $dados = $sql->fetch(PDO::FETCH_ASSOC); // dados do professor para preencher o f
 <body id="body-login">
     <form action="../actions/action_edita_professor.php" method="post" class="container-fluid">
         <div class="container w-50 border border-3 rounded p-4 mt-3 shadow " style="background-color: #E2E3E5;">
+
+            <?php if ($_SESSION['tipo_login'] === 'admin'): ?>
+                <p><a href="../menu_admin/tabela_editar_usuario.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    VOLTAR</a></p>
+            <?php else: ?>
+                <p><a href="../menu_professor.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    VOLTAR</a></p>
+            <?php endif; ?>
+
             <div class="text-center mb-4 fw-bolder">
                 <h2>Atualizar de Professor</h2>
                 <h4>Altere somente o necessário</h4>
             </div>
             <div class="mb-3">
-                <input type="hidden" name="id_input" value=<?= $dados['id']?>>
+                <input type="hidden" name="id_input" value=<?= $dados['id'] ?>>
                 <label for="nome-input" class="form-label">Nome</label>
                 <input type="text" id="nome_input" name="nome_input" class="form-control" value="<?= $dados['nome'] ?>">
             </div>

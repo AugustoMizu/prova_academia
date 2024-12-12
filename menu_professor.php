@@ -24,15 +24,13 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
 </head>
 
 <body id="body-login">
-    <header>
-
-    </header>
     <main class="container-fluid">
         <div class="config-container container w-50 border border-3 rounded p-5 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle">
             <p><a href="login.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
                     SAIR</a></p>
             <label for="">
                 <h2>Configuração da Conta</h2>
+                <h3>Professor</h3>
             </label>
             <span class="material-symbols-outlined">
                 settings
@@ -47,11 +45,8 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
                     <div class="submenu border border-3 rounded p-4 shadow">
                         <h2>Gerenciar Horário</h2>
                         <ul>
-                            <a href="menu_professor/tabela_horario.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Remover/Editar Horário</li>
-                            </a>
                             <a href="menu_professor/criar_horario.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Adicionar Horário</li>
+                                <li>Adicionar/Remover Horário</li>
                             </a>
                         </ul>
                     </div>

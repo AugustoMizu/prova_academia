@@ -29,10 +29,10 @@ if ($usuario && password_verify($senha_digitada, $usuario['senha'])) { // dereci
     $_SESSION = $usuario;
 
     if ($tipo == "aluno") {
-        header("Location: ../menu_aluno.php");
+      header("Location: ../menu_aluno.php");
 
     } else if ($tipo == "professor") {
-        header("Location: ../menu_professor.php");
+     header("Location: ../menu_professor.php");
 
     } else if ($tipo == "admin") {
         header("Location: ../menu_admin.php");

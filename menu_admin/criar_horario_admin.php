@@ -11,6 +11,9 @@ session_start();
 // Consulta para buscar os professores
 $sql = $pdo->query("SELECT id, nome FROM professores");
 $professores = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+// pego o status da url
+$status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -20,23 +23,25 @@ $professores = $sql->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="author" content="Augusto Mizu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-jpg" href="imagens/icon.png">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" type="image/x-jpg" href="../imagens/icon.png">
+    <link rel="stylesheet" href="../styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Cadastro de Horário</title>
 </head>
 
 <body id="body-login">
-    <form action="actions/action_cadastra_horario.php" method="post" class="container-fluid">
+    <form action="../actions/action_criar_horario.php" method="post" class="container-fluid">
         <div class="container w-50 border border-3 rounded p-4 mt-3 shadow" style="background-color: #E2E3E5;">
-            <h2 class="text-center mb-4 fw-bolder">Cadastro de Horário</h2>
+            <p><a href="../menu_admin.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    VOLTAR</a></p>
+            <h2 class="text-center mb-4 fw-bolder">Cadastrar Horário para Professor</h2>
 
             <div class="mb-3">
                 <label for="professor_id" class="form-label">Professor</label>
                 <select id="professor_id" name="professor_id" class="form-select" required>
                     <option value="" disabled selected>Selecione o Professor</option>
                     <?php foreach ($professores as $professor): ?>
-                        <option value="<?= $professor['id']; ?>"><?= $professor['nome']; ?></option>
+                        <option value="<?= $professor['id']; ?>"> <?= $professor['nome']; ?> </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -67,10 +72,20 @@ $professores = $sql->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <button type="submit" class="button2 start-50 translate-middle-x">Cadastrar</button>
-            
+
         </div>
     </form>
+    <script>
+        window.addEventListener('load', function() {
+            var status = <?= json_encode($status) ?>;
 
+            if (status === 'duplicado') {
+                alert("Horário já cadastrado! Tente novamente.      (｡ŏ﹏ŏ)");
+            } else if (status === 'cadastrado') {
+                alert("Cadastrado com sucesso!      (^_^.)");
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

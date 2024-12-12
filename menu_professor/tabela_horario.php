@@ -66,7 +66,7 @@ $horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
             const confirmacao = confirm("Você tem certeza que deseja excluir este horário?");
             if (confirmacao) {
                 // Redireciona para o script de exclusão com confirmação
-                window.location.href = `excluir_horario.php?id=${id}&confirmar=true`;
+                window.location.href = `action_excluir_horario.php?id=${id}&confirmar=true`;
             }
         }
     </script>

@@ -32,7 +32,7 @@ try {
     if ($sql->execute()) {
         // Verifica se o tipo de login é admin, caso sim retorna para o menu de admin
         if ($_SESSION['tipo_login'] === 'admin') {
-            header('Location: ../menu_admin.php?status=atualizado');
+            header('Location: ../menu_admin/tabela_editar_usuario.php?status=atualizado');
         } else {
             header('Location: ../menu_professor.php?status=atualizado');
         }
