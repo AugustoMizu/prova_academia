@@ -74,6 +74,9 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
                             <a href="deletar_contas.php" class="text-black link-underline link-underline-opacity-0">
                                 <li>Deletar uma conta</li>
                             </a>
+                            <a href="editar_contas.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Atualizar uma conta</li>
+                            </a>
                     </div>
                 </div>
                 <div class="option">

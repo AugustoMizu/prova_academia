@@ -39,7 +39,8 @@ CREATE TABLE horarios_professores (
     professor_id INT NOT NULL,
     dia_da_semana ENUM('SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO', 'DOMINGO') NOT NULL,
     turno ENUM('MANHÃ', 'TARDE', 'NOITE', 'INTEGRAL') NOT NULL,
-    FOREIGN KEY (professor_id) REFERENCES professores (id)
+    FOREIGN KEY (professor_id) REFERENCES professores (id),
+    UNIQUE KEY (professor_id, dia_da_semana, turno)
 );
 
 CREATE TABLE agendamentos (

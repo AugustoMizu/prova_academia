@@ -4,6 +4,7 @@ session_start();
     session_destroy();
     header('location:login.php');
 }*/
+$status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,22 +30,29 @@ session_start();
     <main class="container-fluid">
         <div class="config-container container w-50 border border-3 rounded p-5 shadow position-absolute top-50 start-50 translate-middle bg-secondary-subtle">
             <p><a href="login.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
-                SAIR</a></p>
-           <label for=""><h2>Configuração da Conta</h2></label>
+                    SAIR</a></p>
+            <label for="">
+                <h2>Configuração da Conta</h2>
+            </label>
             <span class="material-symbols-outlined">
                 settings
             </span>
             <div class="config-options text-black">
                 <div class="option">
-                    <a href="menu_professor/editar_professor.php"><label for="perfil">Editar Dados Pessoais</label> </a>                   
+                    <a href="menu_professor/editar_professor.php">
+                        <label for="perfil">Editar Dados Pessoais</label> </a>
                 </div>
                 <div class="option">
                     <label for="inventario">Gerenciar Horário</label>
                     <div class="submenu border border-3 rounded p-4 shadow">
-                        <h2>Gerenciar Inventário</h2>
+                        <h2>Gerenciar Horário</h2>
                         <ul>
-                            <a href="menu_professor/tabela_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Remover/Editar Horário</li></a>
-                            <a href="menu_professor/criar_horario.php" class="text-black link-underline link-underline-opacity-0"><li>Adicionar Horário</li></a>
+                            <a href="menu_professor/tabela_horario.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Remover/Editar Horário</li>
+                            </a>
+                            <a href="menu_professor/criar_horario.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Adicionar Horário</li>
+                            </a>
                         </ul>
                     </div>
                 </div>
@@ -53,13 +61,24 @@ session_start();
                     <div class="submenu border border-3 rounded p-4 shadow">
                         <h2>Financeiro</h2>
                         <ul>
-                        <a href="tabela_pagamento.php" class="text-black link-underline link-underline-opacity-0"><li>Visualizar Folha de Pagamento</li></a>
+                            <a href="tabela_pagamento.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Visualizar Folha de Pagamento</li>
+                            </a>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <script>
+        window.addEventListener('load', function() {
+            var status = <?= json_encode($status) ?>;
+
+            if (status === 'atualizado') {
+                alert("Cadastro atualizado com sucesso!      (^_^.)");
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

@@ -47,8 +47,9 @@ $dados = $sql->fetch(PDO::FETCH_ASSOC); // dados do professor para preencher o f
                 <h4>Altere somente o necessário</h4>
             </div>
             <div class="mb-3">
+                <input type="hidden" name="id_input" value=<?= $dados['id']?>>
                 <label for="nome-input" class="form-label">Nome</label>
-                <input type="text" id="nome_input" name="nome_input" class="form-control" value=<?= $dados['nome'] ?>>
+                <input type="text" id="nome_input" name="nome_input" class="form-control" value="<?= $dados['nome'] ?>">
             </div>
             <div class="mb-3 d-flex align-items-center ">
                 <div class="container">
