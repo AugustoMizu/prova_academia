@@ -11,6 +11,15 @@ $dataMinima = date('Y-m-d'); // data minima de nascimento no input é a data de 
     exit;
 }*/
 
+//se o tipo para editar for aluno vai para editar aluno, o tipo vem da tabela editar usuario
+if (isset($_GET['tipo']) && $_GET['tipo'] == 'aluno') {
+    // Verifica se 'id' está definido em $_GET antes de usá-lo
+    if (isset($_GET['id'])) {
+        header('location: ../menu_aluno/editar_aluno.php?id=' . $_GET['id']);
+        exit;
+    }
+}
+
 // usa o id no session para buscar o registro de professor no banco
 if ($_SESSION['tipo_login'] == 'professor') {
     $sql = $pdo->prepare("SELECT * FROM professores WHERE id = :id");
@@ -44,14 +53,14 @@ $dados = $sql->fetch(PDO::FETCH_ASSOC); // dados do professor para preencher o f
 
             <?php if ($_SESSION['tipo_login'] === 'admin'): ?>
                 <p><a href="../menu_admin/tabela_editar_usuario.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
-                    VOLTAR</a></p>
+                        VOLTAR</a></p>
             <?php else: ?>
                 <p><a href="../menu_professor.php" class="link-success link-offset-3 link-underline-opacity-25 link-underline-opacity-100-hover">
-                    VOLTAR</a></p>
+                        VOLTAR</a></p>
             <?php endif; ?>
 
             <div class="text-center mb-4 fw-bolder">
-                <h2>Atualizar de Professor</h2>
+                <h2>Atualizar Cadastro de Professor</h2>
                 <h4>Altere somente o necessário</h4>
             </div>
             <div class="mb-3">
@@ -76,7 +85,7 @@ $dados = $sql->fetch(PDO::FETCH_ASSOC); // dados do professor para preencher o f
             </div>
             <div class="mb-3">
                 <label for="especialidade-input" class="form-label">Especialidade</label>
-                <input type="text" id="especialidade_input" name="especialidade_input" class="form-control" value=<?= $dados['especialidade'] ?> required>
+                <input type="text" id="especialidade_input" name="especialidade_input" class="form-control" value="<?= $dados['especialidade'] ?>" required>
             </div>
             <div class="mb-3 d-flex align-items-center">
                 <div class="container">
@@ -87,6 +96,10 @@ $dados = $sql->fetch(PDO::FETCH_ASSOC); // dados do professor para preencher o f
                     <label for="data_admissao-input" class="form-label">Data de Admissão</label>
                     <input type="date" id="data_admissao_input" name="data_admissao_input" class="form-control" value=<?= $dados['data_admissao'] ?> required>
                 </div>
+            </div>
+            <div class="mb-3">
+                <label for="senha-input" class="form-label">Senha</label>
+                <input type="password" id="senha_input" name="senha_input" class="form-control" placeholder="Digite a nova senha (deixe em branco para não alterar)">
             </div>
             <button type="submit" class="button2  start-50 translate-middle-x"> Salvar</button>
         </div>

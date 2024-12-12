@@ -55,7 +55,7 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= $registro['id']; ?></td>
                             <td><?= $registro['nome']; ?></td>
                             <td><?= $registro['email']; ?></td>
-                            <td><a href="../menu_professor/editar_professor.php?id=<?= $registro['id']; ?>">Editar</a></td>
+                            <td><a href="../menu_professor/editar_professor.php?id=<?= $registro['id']; ?>&tipo=<?= $registro['tipo'] ?>">Editar</a></td>
                             <td><a href="#" onclick='confirmarExclusao(<?= $registro["id"] ?>, "<?= $registro["tipo"] ?>")'>Excluir</a></td>
                         </tr>
                     <?php endforeach; ?>
