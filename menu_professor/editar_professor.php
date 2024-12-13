@@ -5,11 +5,11 @@ session_start();
 $dataMinima = date('Y-m-d'); // data minima de nascimento no input é a data de hoje
 
 //se a sessão não estiver iniciada retorna para a página de login
-/*if(!isset($_SESSION['id'])){ 
+if(!isset($_SESSION['id'])){ 
     session_destroy();
     header('location:../login.php');
     exit;
-}*/
+}
 
 //se o tipo para editar for aluno vai para editar aluno, o tipo vem da tabela editar usuario
 if (isset($_GET['tipo']) && $_GET['tipo'] == 'aluno') {

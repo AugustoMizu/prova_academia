@@ -3,10 +3,10 @@ require "../configPDO.php";
 session_start();
 
 // Verifica se o usuário está autenticado
-/*if (!isset($_SESSION['id'])) {
-    header('Location: login.php'); // Redireciona para a página de login se não estiver autenticado
+if (!isset($_SESSION['id'])) {
+    header('Location: ../login.php'); // Redireciona para a página de login se não estiver autenticado
     exit();
-}*/
+}
 
 // Consulta para buscar os professores
 $sql = $pdo->query("SELECT id, nome FROM professores");

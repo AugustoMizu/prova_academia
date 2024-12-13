@@ -1,9 +1,10 @@
 <?php
 session_start();
-/*if(!isset($_SESSION['id'])){ //se a sessão não estiver iniciada retorna para a página de login
+if (!isset($_SESSION['id'])) { //se a sessão não estiver iniciada retorna para a página de login
     session_destroy();
-    header('location:login.php');
-}*/
+    header('location: login.php');
+    exit;
+}
 $status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 <!DOCTYPE html>
@@ -16,8 +17,7 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" type="imagex/x-icon" href="imagens/icon.png">
     <!--google fonts-->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>configurações</title>
@@ -46,7 +46,10 @@ $status = isset($_GET['status']) ? $_GET['status'] : null;
                         <h2>Gerenciar Agendamentos</h2>
                         <ul>
                             <a href="menu_aluno/criar_agenda.php" class="text-black link-underline link-underline-opacity-0">
-                                <li>Adicionar/Remover Horário</li>
+                                <li>Adicionar Horário</li>
+                            </a>
+                            <a href="menu_aluno/excluir_agenda.php" class="text-black link-underline link-underline-opacity-0">
+                                <li>Remover Horário</li>
                             </a>
                         </ul>
                     </div>

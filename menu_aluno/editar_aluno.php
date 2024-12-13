@@ -5,11 +5,11 @@ session_start();
 $dataMinima = date('Y-m-d'); // data minima de nascimento no input é a data de hoje
 
 // Verifica se a sessão não estiver iniciada e redireciona para a página de login
-/*if(!isset($_SESSION['id'])){ 
+if(!isset($_SESSION['id'])){ 
     session_destroy();
     header('location:../login.php');
     exit;
-}*/
+}
 
 // Usa o id na sessão para buscar o registro do aluno no banco
 if ($_SESSION['tipo_login'] == 'aluno') {

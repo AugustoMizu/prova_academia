@@ -68,7 +68,7 @@ $adminExiste = $sql->fetchColumn();
     window.addEventListener('load', function() {
       var status = <?= json_encode($status) ?>;
 
-      if (status == false) {
+      if (status == 'erro') {
         alert("E-mail ou senha incorretos!      ＼(>o<)ノ");
       }else if (status === 'cadastrado') {
         alert("Administrador cadastrado com sucesso!      (^_^.)");

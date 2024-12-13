@@ -39,6 +39,6 @@ if ($usuario && password_verify($senha_digitada, $usuario['senha'])) { // dereci
     }
     exit;
 } else {
-     header("location: ../login.php?status=false");
+     header("location: ../login.php?status=erro");
     exit;
 }

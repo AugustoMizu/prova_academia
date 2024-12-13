@@ -3,10 +3,10 @@ require "../configPDO.php";
 session_start();
 
 // Verifica se o usuário está autenticado
-/*if (!isset($_SESSION['id'])) {
-    header('Location: login.php'); // Redireciona para a página de login se não estiver autenticado
+if (!isset($_SESSION['id'])) {
+    header('Location: ../login.php'); // Redireciona para a página de login se não estiver autenticado
     exit();
-}*/
+}
 
 // Consulta para buscar os registros de horário
 $sql = $pdo->prepare("SELECT hp.id, hp.dia_da_semana, hp.turno, p.nome AS nome_professor,

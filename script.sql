@@ -7,6 +7,7 @@ use DbGeniusFit;
     data_nascimento DATE NOT NULL, 
     telefone VARCHAR(15),
     salario DECIMAL(10, 2),
+    tipo_login varchar(10) default 'admin',
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     data_admissao DATE NOT NULL 
@@ -18,6 +19,7 @@ use DbGeniusFit;
     data_nascimento DATE NOT NULL, 
     especialidade VARCHAR(100), 
     salario DECIMAL(10, 2) not null,
+     tipo_login varchar(10) default 'professor',
     telefone VARCHAR(15),
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
@@ -28,6 +30,7 @@ CREATE TABLE alunos (
     id INT AUTO_INCREMENT primary key, 
     nome VARCHAR(150) NOT NULL, 
     data_nascimento DATE NOT NULL, 
+     tipo_login varchar(10) default 'aluno',
     telefone VARCHAR(15), 
     email VARCHAR(100) UNIQUE NOT NULL, 
     senha varchar(255),
@@ -47,7 +50,6 @@ CREATE TABLE agendamentos (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     aluno_id INT NOT NULL,
     horario_id INT NOT NULL, 
-    data_aula DATE NOT NULL, -- disabilitar no php inserir datas divergentes do horario do professor
     FOREIGN KEY (aluno_id) REFERENCES alunos(id), 
     FOREIGN KEY (horario_id) REFERENCES horarios_professores(id) 
 );

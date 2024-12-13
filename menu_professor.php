@@ -1,9 +1,10 @@
 <?php
 session_start();
-/*if(!isset($_SESSION['id'])){ //se a sessão não estiver iniciada retorna para a página de login
+if(!isset($_SESSION['id'])){ //se a sessão não estiver iniciada retorna para a página de login
     session_destroy();
     header('location:login.php');
-}*/
+    exit;
+}
 $status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 <!DOCTYPE html>
