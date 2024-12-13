@@ -17,6 +17,8 @@ $sql = $pdo->prepare("
 ");
 $sql->execute();
 $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+$status = isset($_GET['status']) ? $_GET['status'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -69,10 +71,19 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
             const confirmacao = confirm("Você tem certeza que deseja excluir este registro?");
             if (confirmacao) {
                 // Redireciona para o script de exclusão com confirmação
-                window.location.href = `action_excluir_${tipo}.php?id=${id}&confirmar=true`;
+                window.location.href = `../actions/action_excluir_conta.php?id=${id}&tipo=${tipo}&confirmar=true`;
             }
         }
     </script>
+     <script>
+    window.addEventListener('load', function() {
+      var status = <?= json_encode($status) ?>;
+
+      if (status === 'deletado') {
+        alert("Conta deletada com sucesso!      (^_^.)");
+      }
+    });
+  </script>
 </body>
 
 </html>

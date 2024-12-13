@@ -14,7 +14,7 @@ $adminExiste = $sql->fetchColumn();
 $status = (isset($_GET['status']) || isset($_SESSION['id'])) ? $_GET['status'] : false;
 var_dump($status);
 var_dump($adminExiste);
-if ($status == false || ($adminExiste >= 1)) { 
+if ($status == false || ($adminExiste <= 1)) { 
     // se estiver logado e não existir admin ao menos 1 admin,
     // essa pagina não foi acessada corretamente
      header('Location: login.php');
